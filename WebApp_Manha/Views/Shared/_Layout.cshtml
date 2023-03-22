@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebApp_Manha</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/meuCss.css" />
     <link rel="stylesheet" href="~/WebApp_Manha.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -25,6 +26,26 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BemVindo">Bem Vindo</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Home/Login"> Login do sistema </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Cadastro
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Clientes</a></li>
+                                <li><a class="dropdown-item" href="#">Produtos</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/Usuarios/Cadastro">Usuários</a></li>
+                                <li><a class="dropdown-item" href="/Usuarios/Index"> Lista de Usuários</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -32,7 +53,9 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            
             @RenderBody()
+
         </main>
     </div>
 
