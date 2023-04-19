@@ -2,8 +2,8 @@
 {
     public class ClienteViewModel
     {
-        public long Id;
-        public string Nome;
-        public string Telefone;
+        public long Id { get; set; }
+        public string Nome { get; set; }
+        public string Telefone { get; set; }
     }
 }

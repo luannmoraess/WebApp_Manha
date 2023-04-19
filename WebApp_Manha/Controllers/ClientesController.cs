@@ -5,21 +5,19 @@ namespace WebApp_Manha.Controllers
 {
     public class ClientesController : Controller
     {
+        public static List<ClienteViewModel> lista = new List<ClienteViewModel>();
         public IActionResult Lista()
         {
-            ClienteViewModel novo = new ClienteViewModel();
-            novo.Nome = "Fernando Graciano";
-            novo.Id = 10;
-            novo.Telefone = "16991340447";
-
-            ClienteViewModel novo2 = new ClienteViewModel();
-            novo.Nome = "Julio Garcia";
-            novo.Id = 5;
-            novo.Telefone = "169874563214";
-
-            List<ClienteViewModel> lista = new List<ClienteViewModel>();
-            lista.Add(novo);
-            lista.Add(novo2);
+            //ClienteViewModel novo = new ClienteViewModel();
+            //novo.Nome = "Fernando Graciano";
+            //novo.Id = 10;
+            //novo.Telefone = "16991340447";
+            //ClienteViewModel novo2 = new ClienteViewModel();
+            //novo2.Nome = "Julio Garcia";
+            //novo2.Id = 5;
+            //novo2.Telefone = "169874563214";
+            //lista.Add(novo);
+            //lista.Add(novo2);
 
             return View(lista);
         }
@@ -27,6 +25,25 @@ namespace WebApp_Manha.Controllers
         public IActionResult Cadastro()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult SalvarDados(ClienteViewModel model)
+        {
+            if(model.Id > 0)
+            {
+                int indice = lista.FindIndex(a => a.Id == model.Id);
+                lista[indice] = model;
+
+            }
+            else
+            {
+                Random random = new Random();
+                model.Id = random.Next(1, 9999);
+                lista.Add(model);
+            }
+           
+            return RedirectToAction("Lista");
         }
 
         [HttpPost]
@@ -47,12 +64,33 @@ namespace WebApp_Manha.Controllers
 
         public IActionResult Editar(int id)
         {
-            return View();
+            ClienteViewModel cliente = lista.Find(a => a.Id == id);
+            if (cliente != null)
+            {
+                return View(cliente);
+            }
+            else
+            {
+                return RedirectToAction("Lista");
+            }
+            
         }
+
+
+
         public IActionResult Excluir(int id)
         {
-            return View();
+            ClienteViewModel cliente = lista.Find(a => a.Id == id);
+            if(cliente != null)
+            {
+                lista.Remove(cliente);
+            }
+
+            return RedirectToAction("Lista");
         }
+
+
+
         public IActionResult Compras(int id)
         {
             return View();
