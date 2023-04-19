@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp_Manha.Models;
 
 namespace WebApp_Manha.Controllers
 {
@@ -6,7 +7,21 @@ namespace WebApp_Manha.Controllers
     {
         public IActionResult Lista()
         {
-            return View();
+            ClienteViewModel novo = new ClienteViewModel();
+            novo.Nome = "Fernando Graciano";
+            novo.Id = 10;
+            novo.Telefone = "16991340447";
+
+            ClienteViewModel novo2 = new ClienteViewModel();
+            novo.Nome = "Julio Garcia";
+            novo.Id = 5;
+            novo.Telefone = "169874563214";
+
+            List<ClienteViewModel> lista = new List<ClienteViewModel>();
+            lista.Add(novo);
+            lista.Add(novo2);
+
+            return View(lista);
         }
 
         public IActionResult Cadastro()
