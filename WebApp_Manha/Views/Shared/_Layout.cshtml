@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/meuCss.css" />
-    <link rel="stylesheet" href="~/WebApp_Manha.styles.css" asp-append-version="true" />
+    
 </head>
 <body>
     <header>
@@ -41,6 +41,23 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Produtos/Lista">
+                                Lista de Produtos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Categorias/Lista">
+                                Lista de Categorias
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Permissao/Lista">
+                                Lista de Permissões
+                            </a>
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Cadastro
@@ -51,7 +68,21 @@
                                         Clientes
                                     </a>
                                 </li>
-                                <li><a class="dropdown-item" href="#">Produtos</a></li>
+                                <li><a class="dropdown-item" href="/Produtos/Lista">Produtos</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="/Categorias/Lista">
+                                        Categorias
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="/Permissao/Cadastro">
+                                        Cadastrar Permissão
+                                    </a>
+                                </li>
+
+
+
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="/Usuarios/Cadastro">Usuários</a></li>
                                 <li><a class="dropdown-item" href="/Usuarios/Index"> Lista de Usuários</a></li>
