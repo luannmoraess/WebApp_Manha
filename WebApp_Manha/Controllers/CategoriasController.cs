@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApp_Manha.Entidades;
+using WebApp_Manha.Models;
 
 namespace WebApp_Manha.Controllers
 {
@@ -23,9 +24,15 @@ namespace WebApp_Manha.Controllers
         }
 
         [HttpPost]
-        public IActionResult SalvarDados(Categoria dados)
+        public IActionResult SalvarDados(CategoriaViewModel dados)
         {
-            contexto.Categorias.Add(dados);
+            Categoria entidade = new Categoria();
+            entidade.Nome = dados.Nome;
+            entidade.Id = dados.Id;
+            //entidade.Ativo = dados.Ativo == "on" ? true : false;
+            entidade.Ativo = dados.Ativo;
+
+            contexto.Categorias.Add(entidade);
             contexto.SaveChanges();
             return RedirectToAction("Lista");
         }
