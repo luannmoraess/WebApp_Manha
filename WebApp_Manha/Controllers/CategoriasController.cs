@@ -32,9 +32,43 @@ namespace WebApp_Manha.Controllers
             //entidade.Ativo = dados.Ativo == "on" ? true : false;
             entidade.Ativo = dados.Ativo;
 
-            contexto.Categorias.Add(entidade);
-            contexto.SaveChanges();
+            if(entidade.Id > 0)
+            {
+                contexto.Categorias.Update(entidade);
+                contexto.SaveChanges();
+            }
+            else
+            {
+                contexto.Categorias.Add(entidade);
+                contexto.SaveChanges();
+            }
+
             return RedirectToAction("Lista");
+        }
+
+        public IActionResult Excluir(int id)
+        {
+            Categoria item = contexto.Categorias.Find(id);
+            if(item != null)
+            {
+                contexto.Categorias.Remove(item);
+                contexto.SaveChanges();
+            }
+
+            return RedirectToAction("Lista");
+        }
+
+        public IActionResult Editar (int id)
+        {
+            Categoria item = contexto.Categorias.Find(id);
+            if(item != null)
+            {
+                return View(item);
+            }
+            else
+            {
+                return RedirectToAction("Lista");
+            }
         }
     }
 }
