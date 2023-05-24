@@ -23,7 +23,7 @@ namespace WebApp_Manha.Controllers
         {
             NovoProdutoModelView model = new NovoProdutoModelView();
             model.ListaCategorias = db.Categorias.ToList();
-
+            int i = 0;
             return View(model);
         }
         [HttpPost]
